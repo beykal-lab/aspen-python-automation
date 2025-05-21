@@ -75,7 +75,7 @@ Uncertainty quantification
 ---
 
 📌 Example Use Cases
-- Surrogate Modeling: Building a surrogate model for desalination system outlet temperature. Please refer to: "*Shahbazi, A.,et al. “Data-Driven Bi-Level Optimization of Hyperparameters for Machine Learning Models.” 2024 AIChE Annual Meeting, AIChE, 2024.*"
+- Surrogate Modeling: Building a surrogate model for chemical process. Please refer to: "*Shahbazi, A.,et al. “Data-Driven Bi-Level Optimization of Hyperparameters for Machine Learning Models.” 2024 AIChE Annual Meeting, AIChE, 2024.*"
 
 - Energy Minimization: Reducing total energy consumption in a multi-effect evaporation unit.  Please refer to: https://doi.org/10.69997/sct.142929
 
