@@ -87,3 +87,38 @@ Developed for research in Hybrid Modeling & Systems Engineering Laboratory, Univ
 2. *Barochia, D., Nikkhah, H., and Beykal, B. “Design and Optimization of a Multipurpose Zero Liquid Discharge Desalination Plant.” Systems & Control Transactions, vol. 3, 2024, pp. 705–710.*
 3. *Shahbazi, A., Nikkhah, H., et al. “Data-Driven Bi-Level Optimization of Hyperparameters for Machine Learning Models.” 2024 AIChE Annual Meeting, AIChE, 2024.*
 
+   
+****
+
+
+### ✅  If you use latex, here is the bibltex::
+<details>
+<summary>📚 Click to expand BibTeX citations</summary>
+
+```bibtex
+@article{nikkhah2024cumin,
+  title={Cumin and eucalyptus essential oil standardization using fractional distillation: Data-driven optimization and techno-economic analysis},
+  author={Nikkhah, Ali and Nikkhah, Hasan and Shahbazi, Amir and Zarin, Mona Kamelan Zargar and Iz, Duygu Beykal and Ebadi, Mohammad-Taghi and Fakhroleslam, Mohammad and Beykal, Burcu},
+  journal={Food and Bioproducts Processing},
+  volume={143},
+  pages={90--101},
+  year={2024},
+  publisher={Elsevier}
+}
+
+@article{barochia2024design,
+  title={Design and Optimization of a Multipurpose Zero Liquid Discharge Desalination Plant},
+  author={Barochia, D and Nikkhah, H and Beykal, B},
+  journal={Syst. Control. Trans.},
+  volume={3},
+  pages={705--710},
+  year={2024}
+}
+
+@inproceedings{shahbazi2024data,
+  title={Data-Driven Bi-Level Optimization of Hyperparameters for Machine Learning Models},
+  author={Shahbazi, Amir and Nikkhah, Hasan and Aghayev, Zahir and Beykal, Burcu},
+  booktitle={2024 AIChE Annual Meeting},
+  year={2024},
+  organization={AIChE}
+}
