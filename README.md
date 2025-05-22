@@ -2,7 +2,7 @@
 
 This repository demonstrates how to automate **Aspen Plus** simulations using **Python**. The goal is to enable high-throughput simulation workflows for:
 
-- ⚙️Generating large datasets for **machine learning models**
+- ⚙️ Generating large datasets for **machine learning models**
 - ⚙️ Performing **data-driven optimization**
 
 Aspen's COM interface is used to programmatically set inputs, run simulations, and extract results — enabling thousands of simulations without manual interaction.
@@ -11,15 +11,13 @@ Aspen's COM interface is used to programmatically set inputs, run simulations, a
 
 ## 📁 Repository Structure
 aspen-python-automation
-- main.py : Use this file to Perform LHS sampling to create dataset for your machine learning models
-- Aspen_to_Data-driven optimization.py :  Run Aspen from optimizer input and return output
+- `main.py` : Use this file to Perform LHS sampling to create dataset for your machine learning models
+- `Aspen_to_Data-driven optimization.py` :  Run Aspen from optimizer input and return output
   
 **Other files needed to run the code:**
 
-- Simulation.bkp   ====>> Aspen  file for main.py
-- Desalination.bkp ====>> Aspen backup file for optimization
-
-README.md # You are here
+- Simulation.bkp   ====>> Aspen Plus file for main.py
+- Desalination.bkp ====>> Aspen Plus backup file for optimization
 
 ---
 
@@ -36,11 +34,10 @@ Install required packages using:
 pip install pywin32 smt numpy 
 ```
 ---
----
-📌 **Script 1: High-Throughput Simulations using LHS: main.py**
+## 📌 Script 1: High-Throughput Simulations: `main.py`
 
+**Purpose:** Automatically run Aspen Plus simulations using Latin Hypercube Sampling across input variables. Users can implement their own preferred sampling approch as well by changing the code accordingly.
 
-**Purpose:** Automatically run Aspen simulations using Latin Hypercube Sampling (LHS) across  input variables.
 ### 🔄 Workflow:
 1. Define bounds for two Aspen stream variables (e.g., total molar flow of streams S1 and S2).
 2. Generate 10000 (or any values) input samples using Latin Hypercube Sampling.
@@ -50,7 +47,7 @@ pip install pywin32 smt numpy
 6. Save results to a CSV file (sample.csv)
 
    
-📌 **Script 2: Aspen Optimization Interface:  Aspen_to_Data-driven optimization.py**
+## 📌 Script 2: Aspen Optimization Interface: `Aspen_to_Data-driven optimization.py`
 
 **Purpose:** Run a single Aspen simulation using a decision variable from an external optimizer and return the calculated objective function value.
 ### 🔄 Workflow
@@ -63,36 +60,25 @@ pip install pywin32 smt numpy
 
 ---
 ## 💡 Applications
-Surrogate modeling using regression, neural networks, etc.
-
-Black-box optimization (SciPy, DEAP, Bayesian methods)
-
-Process design exploration
-
-Uncertainty quantification
+- Surrogate modeling using regression, neural networks, etc.
+- Black-box optimization (e.g., SciPy, DEAP, Bayesian methods)
+- Process design exploration
+- Uncertainty quantification
 
 ---
+## 📌 Citation & Example Use Cases
+To cite this automation code and explore its use cases, please cite and check these papers below:
+- Surrogate Modeling: Building a machine learning model for chemical processes:
+  > Shahbazi, A., Nikkhah, H., Aghayev, Z., and Beykal, B., 2024. Data-Driven Bi-Level Optimization of Hyperparameters for Machine Learning Models. In Proceedings of 2024 AIChE Annual Meeting. ISBN: 978-0-8169-1122-6.
 
-📌 Example Use Cases
-- Surrogate Modeling: Building a surrogate model for chemical process. Please refer to: "*Shahbazi, A.,et al. “Data-Driven Bi-Level Optimization of Hyperparameters for Machine Learning Models.” 2024 AIChE Annual Meeting, AIChE, 2024.*"
+- Energy Minimization: Reducing total energy consumption in a multi-effect evaporation unit:
 
-- Energy Minimization: Reducing total energy consumption in a multi-effect evaporation unit.  Please refer to: https://doi.org/10.69997/sct.142929
+  > Barochia, D., Nikkhah, N., and Beykal, B., 2024. Design and Optimization of a Multipurpose Zero Liquid Discharge Desalination Plant. Systems & Control Transactions, 3, 705-710. DOI: [10.69997/sct.142929](https://doi.org/10.69997/sct.142929).
 
-- Sensitivity Analysis: Studying key operational parameter influence using data-driven modeling.  Please refer to: https://doi.org/10.1016/j.fbp.2023.10.005
+- Sensitivity Analysis: Studying key operational parameter influence using data-driven modeling:
+  > Nikkhah, A., Nikkhah, H., Shahbazi, A., Zarin, M.K.Z., Iz, D.B., Ebadi, M.T., Fakhroleslam, M. and Beykal, B., 2024. Cumin and eucalyptus essential oil standardization using fractional distillation: Data-driven optimization and techno-economic analysis. Food and Bioproducts Processing, 143, 90-101. DOI: [10.1016/j.fbp.2023.10.005](https://doi.org/10.1016/j.fbp.2023.10.005).
 
-📜 License
-Developed for research in Hybrid Modeling & Systems Engineering Laboratory, University of Connecticut. To cite it, please cite the below papers :
-1. *Nikkhah, A., et al. “Cumin and Eucalyptus Essential Oil Standardization Using Fractional Distillation: Data-Driven Optimization and Techno-Economic Analysis.” Food and Bioproducts Processing, vol. 143, 2024, pp. 90–101.*
-2. *Barochia, D., Nikkhah, H., and Beykal, B. “Design and Optimization of a Multipurpose Zero Liquid Discharge Desalination Plant.” Systems & Control Transactions, vol. 3, 2024, pp. 705–710.*
-3. *Shahbazi, A., Nikkhah, H., et al. “Data-Driven Bi-Level Optimization of Hyperparameters for Machine Learning Models.” 2024 AIChE Annual Meeting, AIChE, 2024.*
-
-   
-****
-
-
-### ✅  If you use latex, here is the bibltex::
-<details>
-<summary>📚 Click to expand BibTeX citations</summary>
+### For bibtex users
 
 ```bibtex
 @article{nikkhah2024cumin,
