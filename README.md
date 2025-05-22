@@ -1,5 +1,4 @@
-# Aspen-python-automation
-# Aspen-Plus Automation with Python
+# Aspen Plus Automation with Python
 
 This repository demonstrates how to automate **Aspen Plus** simulations using **Python**. The goal is to enable high-throughput simulation workflows for:
 
