@@ -11,8 +11,8 @@ Aspen's COM interface is used to programmatically set inputs, run simulations, a
 
 ## 📁 Repository Structure
 aspen-python-automation
-- `main.py` : Use this file to Perform LHS sampling to create dataset for your machine learning models
-- `Aspen_to_Data-driven optimization.py` :  Run Aspen from optimizer input and return output
+- `main.py` : Use this file to Perform Latin Hypercube Sampling (LHS) to create a dataset for your machine learning models
+- `Aspen_to_Data-driven optimization.py` :  Run Aspen Plus from optimizer input and return the output
   
 **Other files needed to run the code:**
 
@@ -36,27 +36,27 @@ pip install pywin32 smt numpy
 ---
 ## 📌 Script 1: High-Throughput Simulations: `main.py`
 
-**Purpose:** Automatically run Aspen Plus simulations using Latin Hypercube Sampling across input variables. Users can implement their own preferred sampling approch as well by changing the code accordingly.
+**Purpose:** Automatically run Aspen Plus simulations using LHS across input variables. Users can implement their own preferred sampling approch as well, however, this requires the users to change sample design function `LHS()` to the desired one.
 
 ### 🔄 Workflow:
-1. Define bounds for two Aspen stream variables (e.g., total molar flow of streams S1 and S2).
-2. Generate 10000 (or any values) input samples using Latin Hypercube Sampling.
-3. For each sample: Modify Aspen input variables
-4. Run Aspen simulation
+1. Define bounds for two Aspen Plus stream variables (e.g., total molar flow of streams S1 and S2).
+2. Generate 10000 (or any values) input samples using LHS.
+3. For each sample: Modify Aspen Plus input variables
+4. Run Aspen Plus simulation
 5. Extract results from the desired stream 
-6. Save results to a CSV file (sample.csv)
+6. Export results to a CSV file (sample.csv)
 
    
-## 📌 Script 2: Aspen Optimization Interface: `Aspen_to_Data-driven optimization.py`
+## 📌 Script 2: Aspen Plus Optimization Interface: `Aspen_to_Data-driven optimization.py`
 
-**Purpose:** Run a single Aspen simulation using a decision variable from an external optimizer and return the calculated objective function value.
+**Purpose:** Run a single Aspen Plus simulation using a decision variable from an external optimizer and return the calculated objective function value.
 ### 🔄 Workflow
-1. Read decision variable (e.g., feed temperature) from input.txt
-2. Modify Aspen block input
+1. Read decision variable (e.g., feed temperature) value from input.txt
+2. Modify Aspen Plus block input
 3. Run the simulation
 4. Extract mass fractions, mass flows, and energy consumption (QNET)
 5. Compute total energy usage
-6. Save result to output.txt (used by external optimizer)
+6. Export results to output.txt (used by external optimizer)
 
 ---
 ## 💡 Applications
