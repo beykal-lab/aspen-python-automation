@@ -1,5 +1,8 @@
 # Aspen Plus Automation with Python
 
+<a href="https://doi.org/10.5281/zenodo.19156362"><img src="https://zenodo.org/badge/984323471.svg" alt="DOI"></a>
+
+
 This repository demonstrates how to automate **Aspen Plus** simulations using **Python**. The goal is to enable high-throughput simulation workflows for:
 
 - ⚙️ Generating large datasets for **machine learning models**
