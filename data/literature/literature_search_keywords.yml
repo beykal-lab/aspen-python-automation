@@ -1,0 +1,92 @@
+keyword_groups:
+  route_selection:
+    zh:
+      - 苯乙烯 乙苯 脱氢 工艺
+      - 苯乙烯 清洁生产 工艺路线
+      - 苯 乙烯 烷基化 乙苯
+    en:
+      - styrene ethylbenzene dehydrogenation process
+      - styrene clean production process route
+      - benzene ethylene alkylation ethylbenzene
+  catalyst_and_reaction:
+    zh:
+      - 乙苯脱氢 催化剂 铁钾
+      - 乙苯脱氢 转化率 选择性
+      - 乙苯脱氢 动力学
+    en:
+      - ethylbenzene dehydrogenation catalyst iron potassium
+      - ethylbenzene dehydrogenation conversion selectivity
+      - ethylbenzene dehydrogenation kinetics
+  low_carbon_routes:
+    zh:
+      - CO2辅助 乙苯脱氢 苯乙烯
+      - 二氧化碳 乙苯脱氢
+      - 苯乙烯 低碳 工艺
+    en:
+      - CO2-assisted ethylbenzene dehydrogenation styrene
+      - carbon dioxide assisted dehydrogenation ethylbenzene
+      - low carbon styrene production
+  separation:
+    zh:
+      - 苯乙烯 精馏 阻聚
+      - 乙苯 苯乙烯 分离 精馏
+      - 苯乙烯 精制 工艺
+    en:
+      - styrene distillation polymerization inhibitor
+      - ethylbenzene styrene separation distillation
+      - styrene purification process
+  heat_integration:
+    zh:
+      - 苯乙烯装置 余热回收
+      - 苯乙烯 夹点分析
+      - 化工过程 能量集成 乙苯脱氢
+    en:
+      - styrene plant heat recovery
+      - styrene pinch analysis
+      - process heat integration ethylbenzene dehydrogenation
+  safety_hazop:
+    zh:
+      - 苯乙烯 HAZOP 聚合 安全
+      - 苯乙烯 储存 阻聚 安全
+      - 乙苯脱氢 氢气 安全
+    en:
+      - styrene HAZOP polymerization safety
+      - styrene storage inhibitor safety
+      - ethylbenzene dehydrogenation hydrogen safety
+  environment:
+    zh:
+      - 苯乙烯 VOC 废气 处理
+      - 苯乙烯 废水 处理
+      - 苯乙烯 碳排 生命周期
+    en:
+      - styrene VOC emission control
+      - styrene wastewater treatment
+      - styrene carbon footprint life cycle assessment
+  economics:
+    zh:
+      - 苯乙烯 经济评价 成本
+      - 苯乙烯 市场 价格
+      - 苯乙烯 项目 可行性研究
+    en:
+      - styrene techno-economic analysis
+      - styrene market price
+      - styrene feasibility study
+
+search_channels:
+  - CNKI
+  - Google Scholar
+  - Crossref
+  - ScienceDirect
+  - ACS Publications
+  - Springer
+  - 专利数据库
+  - 行业报告和政策文件
+
+minimum_evidence_targets:
+  route_selection: 30
+  reaction_and_catalyst: 15
+  separation: 10
+  heat_integration_and_low_carbon: 10
+  economics_and_market: 10
+  safety_environment: 10
+

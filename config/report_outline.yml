@@ -1,0 +1,79 @@
+reports:
+  feasibility_report:
+    title: 项目可行性研究报告
+    word_limit: 40000
+    outputs:
+      - docx
+      - pdf
+    chapters:
+      - 总论
+      - 项目建设背景和意义
+      - 市场分析和产品方案
+      - 原料资源和厂址选择
+      - 工艺路线比选
+      - 推荐工艺方案
+      - 与总厂或园区系统集成
+      - 节能环保和低碳循环方案
+      - 安全职业卫生和消防
+      - 投资估算和经济评价
+      - 社会环境和工程伦理分析
+      - 结论与建议
+
+  preliminary_design_report:
+    title: 初步设计说明书
+    word_limit: 150000
+    outputs:
+      - docx
+      - pdf
+    chapters:
+      - 设计总说明
+      - 设计依据和设计原则
+      - 产品规格和生产规模
+      - 原料辅助材料和公用工程
+      - 工艺流程说明
+      - Aspen模拟和流程优化
+      - 物料衡算
+      - 热量衡算
+      - 主要设备选型
+      - 典型设备设计
+      - 自动控制和仪表
+      - 车间布置和总平面布置
+      - 管道设计
+      - 安全设计
+      - 环境保护和三废处理
+      - 能量集成和节能
+      - 经济分析
+      - 结论
+      - 附录
+
+  equipment_calculation_report:
+    title: 典型设备工艺设计计算说明书
+    word_limit: 50000
+    outputs:
+      - docx
+      - pdf
+    chapters:
+      - 计算依据
+      - Aspen数据来源说明
+      - 脱氢反应器工艺设计
+      - 苯乙烯精制塔工艺设计
+      - 乙苯回收塔工艺设计
+      - 关键换热器选型计算
+      - 其他设备选型说明
+      - 设备一览表
+      - 计算模型和源程序说明
+
+  hazop_report:
+    title: HAZOP分析报告
+    required_for_score: true
+    outputs:
+      - docx
+      - pdf
+      - xlsx
+    chapters:
+      - 分析范围
+      - 节点划分
+      - 偏差分析表
+      - 主要风险闭环
+      - 整改建议和责任分配
+

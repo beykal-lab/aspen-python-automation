@@ -1,0 +1,79 @@
+project:
+  id: styrene_clean_production_2026
+  name: 2026天正设计杯苯乙烯清洁生产分厂
+  contest: 第二十届全国大学生化工设计竞赛
+  topic: 苯乙烯清洁生产分厂设计
+  plan_document: docs/competition/styrene_clean_production_full_automation_plan.md
+  timezone: Asia/Shanghai
+  status: week1_scaffolding
+
+team_decisions:
+  main_route: R2
+  fallback_route: R1
+  innovation_route: R3
+  decision_status: draft_recommendation
+  decision_review_gate: G2_route_freeze
+  notes:
+    - R2作为推荐主路线：苯与乙烯烷基化制乙苯，再乙苯脱氢制苯乙烯。
+    - R1作为保底路线：外购乙苯脱氢制苯乙烯，用于Aspen快速跑通。
+    - R3作为创新增强路线：CO2辅助乙苯脱氢，仅在文献和模型证据充分后纳入主报告。
+
+design_basis:
+  product:
+    main_product: styrene
+    target_grade: polymer_grade
+    target_purity_mass_fraction: 0.995
+    status: draft
+    evidence_required: true
+  capacity_scenarios:
+    - id: S1
+      annual_capacity_tpy: 100000
+      purpose: conservative_case
+      status: candidate
+    - id: S2
+      annual_capacity_tpy: 200000
+      purpose: base_case
+      status: recommended_draft
+    - id: S3
+      annual_capacity_tpy: 300000
+      purpose: scale_up_case
+      status: candidate
+  operating_hours_per_year: 8000
+  location:
+    selection_status: not_frozen
+    candidate_site_count_minimum: 3
+    required_outputs:
+      - site_score_matrix
+      - utility_integration_plan
+      - logistics_and_environment_notes
+
+automation:
+  single_source_of_truth: true
+  run_id_format: "YYYYMMDD-HHMMSS-<module>-<short_hash>"
+  frozen_model_policy:
+    baseline_model_gate: G3_simulation_gate
+    optimized_case_gate: G4_optimization_gate
+  required_exports:
+    simulation:
+      - stream_table.csv
+      - energy_table.csv
+      - block_table.csv
+      - utility_table.csv
+      - convergence_log.json
+      - model_contract.json
+    reports:
+      - docx
+      - pdf
+    drawings:
+      - dwg_2004
+      - dxf
+      - pdf
+
+week1_targets:
+  - create_task_requirements_matrix
+  - create_literature_evidence_template
+  - create_route_score_template
+  - create_project_configuration
+  - create_weekly_review_template
+  - verify_templates_parse_or_open
+

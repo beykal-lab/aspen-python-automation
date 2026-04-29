@@ -1,0 +1,143 @@
+source:
+  file: D:/赛题任务书.pdf
+  copied_file: contest_task.pdf
+  contest_year: 2026
+  extracted_on: 2026-04-28
+
+design_topic:
+  title: 苯乙烯清洁生产分厂设计
+  requirement: 为某大型化工企业设计一座苯乙烯清洁生产的分厂，技术符合中国绿色低碳循环发展要求。
+
+basic_conditions:
+  feedstock:
+    requirement: 原料类型及原料规格由参赛队根据资源调研结果自行确定。
+    project_action: 建立原料候选库、市场调研表和证据表。
+  product:
+    requirement: 产品结构及其技术规格由参赛队根据市场规划自行拟订。
+    project_action: 暂定聚合级苯乙烯，后续由市场和标准证据冻结。
+  capacity:
+    requirement: 生产规模由参赛队根据资源规划、市场规划以及国家政策自行确定。
+    project_action: 设置10万吨、20万吨、30万吨每年三个场景并经济比较。
+  safety:
+    requirement: 贯彻安全第一，从提高本质安全性出发采用安全技术和安全设计方法。
+    project_action: 建立HAZOP节点、P&ID保护层、联锁和泄放建议。
+  energy_environment:
+    requirement: 优先采用物耗低、能耗少、废物排放量小的可行生产工艺，并提出副产物处理方案。
+    project_action: 建立能耗、碳排、废气、废水、副产物指标。
+  utilities:
+    requirement: 与总厂公用工程系统集成。
+    project_action: 建立蒸汽、电、冷却水、软水、污水处理、公用工程接口表。
+
+required_work:
+  feasibility:
+    items:
+      - 建设意义
+      - 建设规模
+      - 工艺技术方案
+      - 与总厂或园区的系统集成方案
+      - 厂址选择
+      - 与社会及环境的和谐发展
+      - 技术经济分析
+    outputs:
+      - outputs/reports/feasibility/feasibility_report.docx
+      - outputs/reports/feasibility/feasibility_report.pdf
+  process_design:
+    items:
+      - 安全生产保障措施
+      - 先进单元过程技术应用
+      - 集成与节能技术应用
+      - 工艺流程计算机仿真设计
+      - 绘制PFD和P&ID
+      - 编制物料及热量平衡计算书
+    outputs:
+      - models/aspen/
+      - results/simulation/
+      - outputs/drawings/pfd/
+      - outputs/drawings/pid/
+  equipment_design:
+    items:
+      - 反应器工艺设计
+      - 塔器工艺设计
+      - 换热器工艺选型设计
+      - 其他重要设备工艺设计及选型说明
+      - 设备一览表
+    outputs:
+      - results/equipment/
+      - outputs/reports/equipment_calculation/
+  workshop_layout:
+    items:
+      - 车间布置设计
+      - 车间主要工艺管道配管设计
+      - 车间设备平面布置图
+      - 车间设备立面布置图
+      - 设备布置三维设计
+    outputs:
+      - outputs/drawings/layout/
+      - models/three_d/
+  plant_layout:
+    items:
+      - 工艺车间和辅助区域布置
+      - 总平面布置图
+    outputs:
+      - outputs/drawings/layout/plant_general_arrangement/
+  economics:
+    items:
+      - 设备费用
+      - 公用工程费用
+      - 人工成本
+      - 三废处理费用
+      - 技术来源费用
+      - 经济评价
+    outputs:
+      - results/economics/
+
+submission_materials:
+  required:
+    - id: A1
+      name: 项目可行性研究报告
+      limit: 4万字以内
+      formats: [docx, pdf]
+      status: not_started
+    - id: A2
+      name: 初步设计说明书
+      limit: 15万字以内
+      formats: [docx, pdf]
+      status: not_started
+    - id: A3
+      name: 典型设备工艺设计计算说明书
+      limit: 5万字以内
+      formats: [docx, pdf]
+      status: not_started
+    - id: A4
+      name: 设计图集
+      includes: [PFD, P&ID, 车间设备平面图, 车间设备立面图, 装置平面布置总图, 主要设备工艺条件图]
+      formats: [dwg_2004, pdf]
+      status: not_started
+    - id: A5
+      name: 工艺流程模拟及流程优化计算结果和模拟源程序
+      formats: [aspen_source, python_source, csv, xlsx]
+      status: not_started
+  scored_optional:
+    - id: B1
+      name: HAZOP分析文档和源文件
+      status: planned
+    - id: B2
+      name: 能量集成与节能技术结果和源文件
+      status: planned
+    - id: B3
+      name: 过程成本估算和经济分析评价源文件
+      status: planned
+    - id: B4
+      name: 容器类设备结构设计源文件
+      status: candidate
+    - id: B5
+      name: 三维设计源文件
+      status: candidate
+
+format_requirements:
+  reports: [docx, pdf]
+  drawings: [autocad_2004_compatible, pdf]
+  drawing_font: gbcbig.shx
+  source_files_required_for_professional_software: true
+  onsite_verification_required: true
+
