@@ -1,0 +1,141 @@
+routes:
+  - id: R1
+    name: 外购乙苯脱氢制苯乙烯
+    type: fallback
+    process_blocks:
+      - ethylbenzene_feed_preheat
+      - ethylbenzene_dehydrogenation
+      - reaction_gas_quench
+      - gas_liquid_separation
+      - light_component_removal
+      - ethylbenzene_recycle
+      - styrene_purification
+    advantages:
+      - Aspen模型复杂度最低，适合快速形成可收敛基准流程。
+      - 文献和工程数据充足，便于完成物料衡算、热量衡算和设备计算。
+    risks:
+      - 原料规划和园区系统集成论证较弱。
+      - 清洁生产创新点需要通过热集成、碳排核算和废物资源化补强。
+    aspen_difficulty: low
+    recommended_use: 保底模型和M0/M1阶段基准流程
+
+  - id: R2
+    name: 苯-乙烯烷基化制乙苯 + 乙苯脱氢制苯乙烯
+    type: recommended_main
+    process_blocks:
+      - benzene_and_ethylene_feed
+      - benzene_alkylation
+      - transalkylation_optional
+      - ethylbenzene_purification
+      - ethylbenzene_dehydrogenation
+      - reaction_gas_quench
+      - gas_liquid_separation
+      - aromatic_separation
+      - ethylbenzene_recycle
+      - styrene_purification
+      - waste_gas_and_wastewater_treatment
+    advantages:
+      - 产业链完整，适合大型化工企业分厂设定。
+      - 工艺成熟，工程可信度高。
+      - 可围绕乙苯循环、热集成、低碳公用工程形成创新点。
+    risks:
+      - 流程更长，Aspen建模、PFD、P&ID和设备表工作量更大。
+      - 烷基化部分需要补充催化剂、选择性和分离数据。
+    aspen_difficulty: medium
+    recommended_use: 主报告推荐路线
+
+  - id: R3
+    name: CO2辅助乙苯脱氢制苯乙烯
+    type: innovation_candidate
+    process_blocks:
+      - ethylbenzene_and_co2_feed
+      - co2_assisted_dehydrogenation
+      - reaction_gas_separation
+      - co2_recycle_or_utilization
+      - styrene_purification
+    advantages:
+      - 与绿色低碳主题高度契合。
+      - 可作为清洁生产创新亮点。
+    risks:
+      - 工业成熟度、动力学参数和催化剂可获得性需要强证据支撑。
+      - Aspen模型可能需要简化反应或人工校准。
+    aspen_difficulty: high
+    recommended_use: 加分论证或对比方案，不作为第一版主模型
+
+  - id: R4
+    name: 氧化脱氢制苯乙烯
+    type: literature_comparison
+    process_blocks:
+      - ethylbenzene_feed
+      - oxidant_feed
+      - oxidative_dehydrogenation
+      - safety_separation
+      - styrene_purification
+    advantages:
+      - 理论能耗较低，创新性较强。
+    risks:
+      - 氧化体系安全风险高，选择性和副反应控制难。
+      - 对本科化工设计竞赛的工程完整交付风险较大。
+    aspen_difficulty: high
+    recommended_use: 文献对比和淘汰理由
+
+  - id: R5
+    name: 生物乙醇-乙烯-乙苯-苯乙烯路线
+    type: low_carbon_feedstock_candidate
+    process_blocks:
+      - bioethanol_dehydration
+      - ethylene_purification
+      - benzene_alkylation
+      - ethylbenzene_dehydrogenation
+      - styrene_purification
+    advantages:
+      - 可体现非化石资源利用。
+      - 适合低碳原料场景论证。
+    risks:
+      - 流程链过长，碳足迹边界复杂。
+      - 经济性依赖生物乙醇价格和政策补贴。
+    aspen_difficulty: high
+    recommended_use: 原料低碳场景或附录对比
+
+scoring:
+  scale:
+    min: 1
+    max: 5
+    meaning:
+      1: 明显不适合
+      2: 风险较高
+      3: 可行但需补证据
+      4: 较优
+      5: 强推荐
+  criteria:
+    - key: technical_maturity
+      name: 技术成熟度
+      weight: 0.15
+    - key: feedstock_availability
+      name: 原料可获得性
+      weight: 0.10
+    - key: product_competitiveness
+      name: 产品竞争力
+      weight: 0.08
+    - key: unit_energy_consumption
+      name: 单位能耗
+      weight: 0.12
+    - key: carbon_performance
+      name: 碳排表现
+      weight: 0.12
+    - key: yield_and_selectivity
+      name: 收率和选择性
+      weight: 0.10
+    - key: safety_risk
+      name: 安全风险
+      weight: 0.10
+    - key: environmental_pressure
+      name: 环保压力
+      weight: 0.08
+    - key: aspen_modelability
+      name: Aspen可模拟性
+      weight: 0.08
+    - key: design_completeness
+      name: 设计完整度
+      weight: 0.07
+

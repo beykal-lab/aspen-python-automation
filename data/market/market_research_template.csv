@@ -1,0 +1,6 @@
+item_id,category,item_name,region,unit,price_or_value,currency,source_name,source_url,published_date,collected_date,confidence,used_for,notes
+M0001,product,苯乙烯,中国,元/吨,,CNY,,,,2026-04-28,medium,产品价格和市场容量,待补充
+M0002,feedstock,苯,中国,元/吨,,CNY,,,,2026-04-28,medium,原料成本,待补充
+M0003,feedstock,乙烯,中国,元/吨,,CNY,,,,2026-04-28,medium,原料成本,待补充
+M0004,feedstock,乙苯,中国,元/吨,,CNY,,,,2026-04-28,medium,保底路线原料成本,待补充
+M0005,policy,双碳和绿色低碳循环发展政策,中国,条,,,,,,2026-04-28,medium,政策论证,待补充

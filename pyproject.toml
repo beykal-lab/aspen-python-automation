@@ -1,0 +1,14 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"
+norecursedirs = [
+  ".git",
+  ".pytest_cache",
+  "__pycache__",
+  "github_projects",
+  "zotero-mcp",
+  "cnki-skills",
+  "gs-skills",
+  "docs/literature/pdfs",
+]
