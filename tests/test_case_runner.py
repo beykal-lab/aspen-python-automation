@@ -6,6 +6,7 @@ from pathlib import Path
 
 from aspen_runtime.executor import AspenPlanExecutor
 from case_builder.blank_builder import BlankAspenBuilder
+from case_builder.template_builder import TemplateBkpBuilder
 from process_model.loader import load_process_case
 
 
@@ -53,3 +54,48 @@ def test_case_run_cli_completes_dry_run(tmp_path):
     assert result.returncode == 0
     assert "Execution completed: success" in result.stdout
     assert "run_report.json" in result.stdout
+
+
+def test_execute_template_uses_adapter_for_real_actions(tmp_path):
+    process_case = load_process_case(Path("templates/distillation/benzene_toluene.yml"))
+    source = tmp_path / "source.bkp"
+    source.write_text("fake template", encoding="utf-8")
+    plan = TemplateBkpBuilder(template_path=source, output_dir=tmp_path).plan(process_case)
+
+    class FakeAdapter:
+        def __init__(self):
+            self.calls = []
+
+        def start(self):
+            self.calls.append(("start",))
+            return "started"
+
+        def open_archive(self, path):
+            self.calls.append(("open_archive", Path(path).name))
+            return "opened"
+
+        def run(self):
+            self.calls.append(("run",))
+            return "ran"
+
+        def write_archive(self, path):
+            self.calls.append(("write_archive", Path(path).name))
+            return "saved"
+
+        def read_node(self, path):
+            self.calls.append(("read_node", path))
+            if "MOLEFRAC" in path and "BENZENE" in path:
+                return 0.99
+            return None
+
+        def close(self):
+            self.calls.append(("close",))
+
+    adapter = FakeAdapter()
+    report = AspenPlanExecutor(runtime_mode="execute", output_root=tmp_path, adapter=adapter).execute(plan)
+
+    assert report.success is True
+    assert ("open_archive", "benzene_toluene_distillation.bkp") in adapter.calls
+    assert ("run",) in adapter.calls
+    assert ("write_archive", "benzene_toluene_distillation.bkp") in adapter.calls
+    assert any(step.name == "extract-results" and step.payload["DIST_BENZENE_MOLEFRAC"] == 0.99 for step in report.steps)

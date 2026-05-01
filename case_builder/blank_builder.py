@@ -27,7 +27,7 @@ class BlankAspenBuilder:
             BuildAction(
                 name="create-new-simulation",
                 description="Create a new empty Aspen simulation document.",
-                payload={"case_name": process_case.case.name},
+                payload={"case_name": process_case.case.name, "source_config": process_case.source_path},
             ),
             BuildAction(
                 name="add-components",
