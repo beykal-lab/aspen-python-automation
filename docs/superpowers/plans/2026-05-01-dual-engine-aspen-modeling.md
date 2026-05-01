@@ -22,10 +22,12 @@
 - `case_builder/blank_builder.py`: blank Aspen action planner.
 - `aspen_runtime/__init__.py`: package marker and exported names.
 - `aspen_runtime/connection.py`: Aspen availability detection and dry-run status.
+- `aspen_runtime/executor.py`: build-plan execution and report persistence.
 - `templates/distillation/benzene_toluene.yml`: canonical process case.
 - `tests/test_process_model.py`: process loading and validation tests.
 - `tests/test_case_builders.py`: builder plan tests.
 - `tests/test_aspen_runtime_cli.py`: Aspen check and CLI tests.
+- `tests/test_case_runner.py`: end-to-end dry-run execution tests.
 - `main.py`: CLI commands for case validation, planning, and Aspen detection.
 
 ## Task 1: Process Model
@@ -237,6 +239,45 @@ git commit -m "Add dual-engine Aspen modeling foundation"
 ```
 
 Expected: one coherent commit on `codex/dual-engine-aspen-modeling`.
+
+## Task 5: Dry-Run Execution Layer
+
+**Files:**
+- Create: `aspen_runtime/executor.py`
+- Modify: `aspen_runtime/__init__.py`
+- Modify: `main.py`
+- Test: `tests/test_case_runner.py`
+
+- [ ] **Step 1: Write failing tests**
+
+Write tests that execute the blank builder in `dry-run` mode and assert that
+`run_report.json` and `results.csv` are created. Add a CLI test for
+`python main.py case-run --config templates/distillation/benzene_toluene.yml --mode blank --runtime-mode dry-run`.
+
+- [ ] **Step 2: Run tests and verify failure**
+
+Run: `python -m pytest tests/test_case_runner.py -q`
+
+Expected: failure because `aspen_runtime.executor` and `case-run` do not exist.
+
+- [ ] **Step 3: Implement executor and CLI command**
+
+Implement `AspenPlanExecutor.execute(plan)` so dry-run executes every action,
+persists `run_report.json`, writes `results.csv`, and separates output by
+`<builder-mode>-<runtime-mode>`.
+
+- [ ] **Step 4: Verify tests and smoke runs**
+
+Run:
+
+```powershell
+python -m pytest
+python main.py case-run --config templates/distillation/benzene_toluene.yml --mode blank --runtime-mode dry-run --output-dir cases/generated
+python main.py case-run --config templates/distillation/benzene_toluene.yml --mode template --runtime-mode dry-run --output-dir cases/generated
+```
+
+Expected: all tests pass and both dry-run commands complete successfully with
+separate report directories.
 
 ## Self-Review
 

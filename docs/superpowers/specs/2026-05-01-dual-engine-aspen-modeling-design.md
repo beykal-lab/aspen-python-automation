@@ -24,6 +24,8 @@ This design covers the first production-shaped slice:
 - A blank-Aspen builder that plans component, property, stream, block, and
   connection creation actions.
 - An Aspen runtime interface that can run in dry-run mode without Aspen.
+- An execution layer that persists run reports and result summaries for every
+  builder/runtime combination.
 - CLI commands that expose validation, planning, and Aspen availability checks.
 - Tests that run in CI without Aspen installed.
 
@@ -143,6 +145,8 @@ The first slice adds:
 python main.py case-validate --config templates/distillation/benzene_toluene.yml
 python main.py case-plan --config templates/distillation/benzene_toluene.yml --mode template
 python main.py case-plan --config templates/distillation/benzene_toluene.yml --mode blank
+python main.py case-run --config templates/distillation/benzene_toluene.yml --mode template --runtime-mode dry-run
+python main.py case-run --config templates/distillation/benzene_toluene.yml --mode blank --runtime-mode dry-run
 python main.py aspen-check
 ```
 
@@ -160,6 +164,8 @@ Tests must not require Aspen. The first slice verifies:
 - Process definitions load and validate.
 - Invalid definitions produce specific messages.
 - Template and blank builders generate different but valid action plans.
+- Template and blank dry-runs generate separate report directories so their
+  outputs do not overwrite each other.
 - `aspen-check` reports unavailable Aspen cleanly when `win32com` is absent.
 - Existing Week-1 validation and help behavior remain intact.
 

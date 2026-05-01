@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 from aspen_runtime.connection import AspenConnection
+from aspen_runtime.executor import AspenPlanExecutor
 from case_builder.blank_builder import BlankAspenBuilder
 from case_builder.template_builder import TemplateBkpBuilder
 from competition_pack.validation import validate_week1_pack
@@ -87,6 +88,41 @@ def build_parser() -> argparse.ArgumentParser:
         default="detect",
         help="Connection check mode.",
     )
+
+    case_run_parser = subparsers.add_parser(
+        "case-run",
+        help="Execute a process case build plan.",
+    )
+    case_run_parser.add_argument(
+        "--config",
+        type=Path,
+        required=True,
+        help="Process case YAML file.",
+    )
+    case_run_parser.add_argument(
+        "--mode",
+        choices=["template", "blank"],
+        default="template",
+        help="Builder mode to execute.",
+    )
+    case_run_parser.add_argument(
+        "--runtime-mode",
+        choices=["dry-run", "detect", "execute"],
+        default="dry-run",
+        help="Runtime execution mode.",
+    )
+    case_run_parser.add_argument(
+        "--template",
+        type=Path,
+        default=Path("templates/aspen/distillation_base.bkp"),
+        help="Template .bkp path for template mode.",
+    )
+    case_run_parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=Path("cases/generated"),
+        help="Directory for generated run reports and results.",
+    )
     return parser
 
 
@@ -121,23 +157,42 @@ def run_case_validate(config: Path) -> int:
 
 
 def run_case_plan(config: Path, mode: str, template: Path) -> int:
+    plan = build_case_plan(config, mode, template)
+    if plan is None:
+        return 1
+
+    print(f"Build plan: {plan.case_name} ({plan.mode})")
+    for index, action in enumerate(plan.actions, start=1):
+        print(f"{index}. {action.name}: {action.description}")
+    return 0
+
+
+def build_case_plan(config: Path, mode: str, template: Path):
     process_case = load_process_case(config)
     result = validate_process_case(process_case)
     if not result.valid:
         print("Process case validation failed:")
         for error in result.errors:
             print(f"- {error}")
-        return 1
+        return None
 
     if mode == "template":
-        plan = TemplateBkpBuilder(template_path=template).plan(process_case)
-    else:
-        plan = BlankAspenBuilder().plan(process_case)
+        return TemplateBkpBuilder(template_path=template).plan(process_case)
+    return BlankAspenBuilder().plan(process_case)
 
-    print(f"Build plan: {plan.case_name} ({plan.mode})")
-    for index, action in enumerate(plan.actions, start=1):
-        print(f"{index}. {action.name}: {action.description}")
-    return 0
+
+def run_case_run(config: Path, mode: str, runtime_mode: str, template: Path, output_dir: Path) -> int:
+    plan = build_case_plan(config, mode, template)
+    if plan is None:
+        return 1
+
+    report = AspenPlanExecutor(runtime_mode=runtime_mode, output_root=output_dir).execute(plan)
+    print(f"Execution completed: {'success' if report.success else 'failed'}")
+    print(f"Report: {report.report_path}")
+    print(f"Results: {report.results_path}")
+    for step in report.steps:
+        print(f"- {step.name}: {step.status} - {step.message}")
+    return 0 if report.success else 1
 
 
 def run_aspen_check(mode: str) -> int:
@@ -160,6 +215,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_case_plan(args.config, args.mode, args.template)
     if args.command == "aspen-check":
         return run_aspen_check(args.mode)
+    if args.command == "case-run":
+        return run_case_run(args.config, args.mode, args.runtime_mode, args.template, args.output_dir)
 
     parser.print_help()
     return 0
