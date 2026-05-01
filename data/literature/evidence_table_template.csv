@@ -1,0 +1,4 @@
+evidence_id,claim,source_type,title,authors,year,doi_or_url,key_data,applicability,limitation,confidence,used_in,status,owner,notes
+E0001,乙苯脱氢是苯乙烯主流成熟生产路线,review,,,,,,用于路线选择论证,需补充近年工业数据,medium,可研报告-工艺路线比选,open,,
+E0002,聚合级苯乙烯产品纯度建议不低于99.5%,standard_or_industry_data,,,,,,用于产品规格冻结,需确认国标或企业指标,medium,初设说明书-产品规格,open,,
+E0003,苯乙烯精馏需考虑阻聚和温度控制,safety_or_process_paper,,,,,,用于安全设计和P&ID保护层,需补充阻聚剂用量范围,medium,HAZOP和初设说明书,open,,

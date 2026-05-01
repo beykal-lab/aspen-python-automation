@@ -1,0 +1,6 @@
+route_id,route_name,technical_maturity,feedstock_availability,product_competitiveness,unit_energy_consumption,carbon_performance,yield_and_selectivity,safety_risk,environmental_pressure,aspen_modelability,design_completeness,weighted_score,evidence_ids,review_status,decision
+R1,外购乙苯脱氢制苯乙烯,,,,,,,,,,,,E0001,draft,fallback
+R2,苯-乙烯烷基化制乙苯 + 乙苯脱氢制苯乙烯,,,,,,,,,,,,E0001,draft,recommended_main
+R3,CO2辅助乙苯脱氢制苯乙烯,,,,,,,,,,,,,draft,innovation_candidate
+R4,氧化脱氢制苯乙烯,,,,,,,,,,,,,draft,literature_comparison
+R5,生物乙醇-乙烯-乙苯-苯乙烯路线,,,,,,,,,,,,,draft,low_carbon_feedstock_candidate

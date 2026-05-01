@@ -1,0 +1,33 @@
+case:
+  name: benzene_toluene_distillation
+  mode: template
+  description: Benzene/toluene binary distillation case for automation testing.
+
+components:
+  - BENZENE
+  - TOLUENE
+
+streams:
+  FEED:
+    temperature_c: 25
+    pressure_bar: 1
+    flow_kmol_hr: 100
+    composition:
+      BENZENE: 0.5
+      TOLUENE: 0.5
+
+units:
+  TOWER:
+    type: RADFRAC
+    stages: 30
+    feed_stage: 15
+    pressure_bar: 1
+    reflux_ratio: 2.0
+
+products:
+  DIST:
+    target_component: BENZENE
+    purity_min: 0.95
+  BOTTOM:
+    target_component: TOLUENE
+    purity_min: 0.95

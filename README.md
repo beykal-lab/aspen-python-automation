@@ -11,6 +11,31 @@ Aspen's COM interface is used to programmatically set inputs, run simulations, a
 
 ---
 
+## Current Maintained Entry Points
+
+The repository now separates the maintained chemical-design competition checks
+from the original Aspen COM examples:
+
+```powershell
+python main.py --help
+python main.py validate-week1 --root .
+python scripts/validate_week1_pack.py --root .
+python -m pytest
+```
+
+The original Aspen automation snippets are still available, but they should be
+run explicitly through the legacy entry point so importing the project or asking
+for help does not start Aspen:
+
+```powershell
+python main.py legacy-aspen-sample --script "Aspen_to_Data-driven optimization.py"
+```
+
+See `docs/codebase_assessment.md` for the current codebase evaluation and Git
+management policy.
+
+---
+
 ## 📁 Repository Structure
 aspen-python-automation
 - `main.py` : Use this file to Perform Latin Hypercube Sampling (LHS) to create a dataset for your machine learning models

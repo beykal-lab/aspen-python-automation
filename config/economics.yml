@@ -1,0 +1,65 @@
+currency: CNY
+price_basis:
+  source: 赛题任务书
+  date: 2026-02
+  override_policy: 市场调研价格可覆盖默认值，但必须保留任务书价格作为对照。
+
+equipment_material_prices:
+  stainless_steel_304:
+    price_cny_per_ton: 48000
+    source: 赛题任务书
+  carbon_steel_low_medium_pressure:
+    max_pressure_mpa: 4
+    price_cny_per_ton: 18000
+    source: 赛题任务书
+  carbon_steel_high_pressure:
+    price_cny_per_ton: 22000
+    source: 赛题任务书
+  special_stainless_steel:
+    price_cny_per_ton: null
+    source: 市场调研
+    evidence_required: true
+
+utilities:
+  low_pressure_steam:
+    pressure_mpa: 1.8
+    price_cny_per_ton: 255
+  medium_pressure_steam:
+    pressure_mpa: 3.8
+    price_cny_per_ton: 265
+  high_pressure_steam:
+    pressure_mpa: 9.8
+    price_cny_per_ton: 285
+  electricity:
+    price_cny_per_kwh: 0.70
+  process_soft_water:
+    price_cny_per_ton: 10
+  cooling_water:
+    price_cny_per_ton: 0.5
+  wastewater_treatment:
+    cod_limit: COD<500
+    price_cny_per_ton: 5
+
+labor:
+  average_cost_cny_per_month_person: 12000
+  includes_social_security_and_housing_fund: true
+
+economic_outputs:
+  - capex
+  - opex
+  - annual_revenue
+  - annual_profit
+  - total_annual_cost
+  - net_present_value
+  - internal_rate_of_return
+  - payback_period
+  - sensitivity_analysis
+
+sensitivity_items:
+  - raw_material_price
+  - styrene_product_price
+  - steam_price
+  - electricity_price
+  - equipment_investment
+  - annual_operating_hours
+

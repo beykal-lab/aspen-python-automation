@@ -1,0 +1,48 @@
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments
+.venv/
+venv/
+env/
+
+# Runtime logs and generated outputs
+*.log
+run_history.csv
+sample.csv
+input.txt
+output.txt
+
+# Aspen local artifacts
+*.bkp
+*.apw
+*.sim
+*.inp
+*.def
+*.dmp
+*.err
+
+# Generated case outputs
+cases/**/results/
+cases/**/*.json
+cases/**/*.csv
+
+# Literature/download/vendor workspaces
+docs/literature/pdfs/
+github_projects/
+cnki-skills/
+gs-skills/
+zotero-mcp/
+
+# Local contest/source files not suitable for Git history
+contest_task.pdf
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
